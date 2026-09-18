@@ -79,10 +79,12 @@ jobs:
       - name: deploy
         uses: azure/arm-deploy@v2
         with:
-          subscriptionId: ${{ env.aedbcbc9-9091-4b7e-83c7-06c91b3f744 }}
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: ${{ env.RESOURCE-GROUP }}
           template: bicep-template/webapp.bicep
-          parameters: "webAppName=${{ env.eshoponweb-webapp65148382 }} location=${{ env.LOCATION }}"
+          #parameters: "webAppName=${{ env.eshoponweb-webapp65148382 }} location=${{ env.LOCATION }}"
+          parameters: "webAppName=${{ env.WEBAPP-NAME }} location=${{ env.LOCATION }}"
+
           failOnStdErr: false
 
       # Publish website to Azure App Service (WebApp)
